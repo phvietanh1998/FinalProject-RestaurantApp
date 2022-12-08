@@ -9,8 +9,7 @@ const AdminAddItem = () => {
   const [newInfo, setNewInfo] = useState({
     name: '',
     price: 0,
-    image:
-      'https://i0.wp.com/cachlam.info/wp-content/uploads/2021/12/cong-thuc-banh-ran-doremon-dorayaki-1.jpg?fit=1020%2C574&ssl=1',
+    image: 'https://www.travelinsurancedirect.com.au/blog/wp-content/uploads/2016/03/GettyImages-1219328713.jpg',
     categoryId: 1,
     detail: {
       desc: '',
@@ -88,7 +87,11 @@ const AdminAddItem = () => {
         >
           <div className="col-span-2 row-span-9 p-5">
             <div className="picture">
-              <img src={img1} alt="img1" className="w-[310px] h-[310px]" />
+              <img
+                src="https://www.travelinsurancedirect.com.au/blog/wp-content/uploads/2016/03/GettyImages-1219328713.jpg"
+                alt="img1"
+                className="w-[310px] h-[310px]"
+              />
             </div>
             <div className="flex flex-col gap-3 mt-5 text-lg ">
               <div>
