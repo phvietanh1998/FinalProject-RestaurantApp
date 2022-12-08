@@ -46,10 +46,10 @@ const AdminOrderHistories = () => {
               setIsLoading(true);
               setDirection('');
             })
-            .catch((err) => console.log());
+            .catch((err) => console.log(err));
         }
       })
-      .catch((err) => console.log());
+      .catch((err) => console.log(err));
   };
 
   const nextPage = () => {
