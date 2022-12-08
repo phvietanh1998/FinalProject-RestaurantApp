@@ -18,12 +18,13 @@ const MenuItems = () => {
 
   const [itemList, setItemList] = useState([]);
   const [categories, setCategories] = useState([]);
-
+  const [isLoading, setIsLoading] = useState(false);
   const handleSearchChange = (e) => {
     setSearchText(e.target.value);
   };
 
   const handleFetchMenu = () => {
+    setIsLoading(true);
     axios
       .get('https://after-eleven-server.herokuapp.com/api/categories')
       .then(function (response) {
@@ -31,10 +32,14 @@ const MenuItems = () => {
       })
       .catch(function (error) {
         console.log(error);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   };
 
   const displayItem = () => {
+    setIsLoading(true);
     categories.length &&
       axios
         .get(
@@ -47,6 +52,9 @@ const MenuItems = () => {
         })
         .catch(function (error) {
           console.log(error);
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
   };
 
@@ -95,7 +103,7 @@ const MenuItems = () => {
           </div>
 
           <div className="flex mt-14 md:flex-row flex-col">
-            {categories[0] && (
+            {!isLoading && (
               <div className="picture relative lg:mr-20 mx-auto md:h-[500px] h-[420px] lg:w-[550px] w-[300px]">
                 <img
                   src={categories.filter((c) => c.name === type)[0].image}
