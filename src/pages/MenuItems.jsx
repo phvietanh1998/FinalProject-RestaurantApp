@@ -16,6 +16,8 @@ const MenuItems = () => {
   const items = useSelector(selectItem);
   const [searchText, setSearchText] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoading1, setIsLoading1] = useState(false);
+
   const [itemList, setItemList] = useState([]);
   const [categories, setCategories] = useState([]);
 
@@ -37,6 +39,8 @@ const MenuItems = () => {
   };
 
   const displayItem = () => {
+    setIsLoading1(true);
+
     categories.length &&
       axios
         .get(
@@ -49,7 +53,8 @@ const MenuItems = () => {
         })
         .catch(function (error) {
           console.log(error);
-        });
+        })
+        .finally(() => setIsLoading1(false));
   };
 
   useEffect(() => {
@@ -97,7 +102,7 @@ const MenuItems = () => {
           </div>
 
           <div className="flex mt-14 md:flex-row flex-col">
-            {isLoading && (
+            {!isLoading && categories[0] && (
               <div className="picture relative lg:mr-20 mx-auto md:h-[500px] h-[420px] lg:w-[550px] w-[300px]">
                 <img
                   src={categories.filter((c) => c.name === type)[0].image}
@@ -112,21 +117,22 @@ const MenuItems = () => {
                 </div>
               </div>
             )}
-
-            <div className="flex flex-wrap gap-x-14 gap-y-5 justify-center p-5 lg:border-t border-solid border-dimWhite w-full lg:mt-0 mt-5">
-              {itemList
-                .filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()))
-                .map((item) => (
-                  <CardItem
-                    key={item.id}
-                    image={item.image}
-                    name={item.name}
-                    price={item.price}
-                    id={item.id}
-                    type={type}
-                  />
-                ))}
-            </div>
+            {!isLoading1 && (
+              <div className="flex flex-wrap gap-x-14 gap-y-5 justify-center p-5 lg:border-t border-solid border-dimWhite w-full lg:mt-0 mt-5">
+                {itemList
+                  .filter((item) => item.name.toLowerCase().includes(searchText.toLowerCase()))
+                  .map((item) => (
+                    <CardItem
+                      key={item.id}
+                      image={item.image}
+                      name={item.name}
+                      price={item.price}
+                      id={item.id}
+                      type={type}
+                    />
+                  ))}
+              </div>
+            )}
           </div>
         </div>
       </section>
