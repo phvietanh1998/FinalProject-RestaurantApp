@@ -19,6 +19,8 @@ const MenuItems = () => {
   const [itemList, setItemList] = useState([]);
   const [categories, setCategories] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLoading2, setIsLoading2] = useState(false);
+
   const handleSearchChange = (e) => {
     setSearchText(e.target.value);
   };
@@ -39,7 +41,7 @@ const MenuItems = () => {
   };
 
   const displayItem = () => {
-    setIsLoading(true);
+    setIsLoading2(true);
     categories.length &&
       axios
         .get(
@@ -54,7 +56,7 @@ const MenuItems = () => {
           console.log(error);
         })
         .finally(() => {
-          setIsLoading(false);
+          setIsLoading2(false);
         });
   };
 
@@ -103,7 +105,7 @@ const MenuItems = () => {
           </div>
 
           <div className="flex mt-14 md:flex-row flex-col">
-            {!isLoading && (
+            {!isLoading && !isLoading2 && (
               <div className="picture relative lg:mr-20 mx-auto md:h-[500px] h-[420px] lg:w-[550px] w-[300px]">
                 <img
                   src={categories.filter((c) => c.name === type)[0].image}
