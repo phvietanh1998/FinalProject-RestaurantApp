@@ -1,6 +1,6 @@
 import { BiUser, BiPhone, BiHome, BiIdCard } from 'react-icons/bi';
 import { FaBirthdayCake } from 'react-icons/fa';
-import { BsGenderAmbiguous } from 'react-icons/bs';
+import { BsGenderAmbiguous, BsGenderMale, BsGenderFemale } from 'react-icons/bs';
 import { TfiEmail } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
@@ -66,7 +66,9 @@ const Information = () => {
                 <span className="sm:text-xl xs:text-lg text-sm">{accountInfo.username}</span>
               </div>
               <div className="flex xs:gap-5 gap-2 items-center">
-                <BsGenderAmbiguous className="h-[30px] w-[30px] text-primary" />
+                {accountInfo.gender === 'male' && <BsGenderMale className="h-[30px] w-[30px] text-primary" />}
+                {accountInfo.gender === 'female' && <BsGenderFemale className="h-[30px] w-[30px] text-primary" />}
+                {!accountInfo.gender && <BsGenderAmbiguous className="h-[30px] w-[30px] text-primary" />}
                 <span className="sm:text-xl xs:text-lg text-sm capitalize">{accountInfo.gender}</span>
               </div>
               <div className="flex xs:gap-5 gap-2 items-center">

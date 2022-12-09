@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import validator from 'validator';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
+import { BsCheckCircle, BsXCircle } from 'react-icons/bs';
 
 const Register = () => {
   const [error, setError] = useState(false);
@@ -203,13 +203,13 @@ const Register = () => {
 
         {error && (
           <div className="flex justify-center items-center gap-2 text-semibold text-lg text-red-500 mx-auto mt-10">
-            <AiOutlineCloseCircle />
+            <BsXCircle />
             Username already existed
           </div>
         )}
         {isSuccessful && (
           <div className="flex justify-center items-center gap-2 text-semibold text-lg text-green-500 mx-auto mt-10">
-            <AiOutlineCloseCircle />
+            <BsCheckCircle />
             Account successfully created
           </div>
         )}

@@ -40,6 +40,7 @@ const AdminAddItem = () => {
         //handle error
         console.log(response);
       });
+    e.target.reset();
   };
 
   const handleOnChange = (e, key) => {

@@ -133,6 +133,7 @@ const UserInfo = () => {
               return { ...prev, passwordSuccess: false };
             });
           }, 3000);
+          e.target.reset();
         })
         .catch(function () {
           //handle error
@@ -204,7 +205,6 @@ const UserInfo = () => {
     e.preventDefault();
     Object.keys(newInfo).map((key) => {
       if (newInfo[key] !== '') {
-        console.log(newInfo);
         axios
           .patch(`${accountsAPI}/${accountInfo.id}`, {
             [key]: newInfo[key],
@@ -224,6 +224,7 @@ const UserInfo = () => {
           });
       }
     });
+    e.target.reset();
   };
 
   return (

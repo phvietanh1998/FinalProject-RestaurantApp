@@ -3,6 +3,7 @@ import userAvatar1 from '../assets/avatar/u002.png';
 import { FaStar } from 'react-icons/fa';
 import { useState } from 'react';
 import { useGetData } from '../hooks/feedbacks/useGetData';
+import { BsCheckCircle } from 'react-icons/bs';
 
 // import Swiper core and required modules
 import { Pagination } from 'swiper';
@@ -15,13 +16,14 @@ import 'swiper/css/pagination';
 const Feedback = () => {
   const [rating, setRating] = useState(0);
   const [feedback, setFeedback] = useState('');
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const { randomData } = useGetData(true, feedbackAPI);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const body = {
-      username: 'phamvietanh',
+      username: 'Lukatrung',
       rating: rating,
       feedback: feedback,
       avatar: '',
@@ -30,9 +32,17 @@ const Feedback = () => {
       method: 'POST',
       url: 'https://after-eleven-server.herokuapp.com/api/feedbacks',
       data: body,
-    }).catch(function (response) {
-      console.log(response);
-    });
+    })
+      .then((res) => {
+        setIsSubmitted(true);
+        setTimeout(() => {
+          setIsSubmitted(false);
+        }, 3000);
+      })
+      .catch(function (response) {
+        console.log(response);
+      });
+    e.target.reset();
   };
 
   return (
@@ -83,6 +93,12 @@ const Feedback = () => {
                 Send your feedback
               </button>
             </div>
+            {isSubmitted && (
+              <div className="flex justify-center items-center gap-2 text-semibold text-lg text-green-500 mx-auto mt-5">
+                <BsCheckCircle />
+                Thank you for your feedback !
+              </div>
+            )}
           </form>
 
           <div className="flex flex-col items-center sm:col-span-3 col-span-2 text-dimWhite sm:mt-0 mt-10">
