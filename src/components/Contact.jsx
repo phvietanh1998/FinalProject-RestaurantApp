@@ -76,13 +76,13 @@ const Contact = () => {
                 <h4 className="font-semibold lg:text-lg text-base">Pham Viet Anh</h4>
                 <img src={avatarAdmin1} alt="avatarAdmin1" className="h-[100px] w-[100px]" />
                 <div className="flex gap-2 justify-center items-center">
-                  <a href="!#" target="_blank">
+                  <a href="https://github.com/phvietanh1998" target="_blank">
                     <BsGithub className="text-lg" />
                   </a>
-                  <a href="!#" target="_blank">
+                  <a href="https://www.instagram.com/pva98/" target="_blank">
                     <BsInstagram className="text-lg" />
                   </a>
-                  <a href="!#" target="_blank">
+                  <a href="mailto:phvietanh1998@gmail.com" target="_blank">
                     <MdOutlineMail className="text-[24px]" />
                   </a>
                 </div>
@@ -92,13 +92,13 @@ const Contact = () => {
                 <h4 className="font-semibold lg:text-lg text-base">Nguyen Manh Trung</h4>
                 <img src={avatarAdmin2} alt="avatarAdmin2" className="h-[100px] w-[100px]" />
                 <div className="flex gap-2 justify-center items-center">
-                  <a href="!#" target="_blank">
+                  <a href="https://github.com/trungnm14498" target="_blank">
                     <BsGithub className="text-lg" />
                   </a>
-                  <a href="!#" target="_blank">
+                  <a href="https://www.instagram.com/trungnm14498/" target="_blank">
                     <BsInstagram className="text-lg" />
                   </a>
-                  <a href="!#" target="_blank">
+                  <a href="mailto:trungnm.14498@gmail.com" target="_blank">
                     <MdOutlineMail className="text-[24px]" />
                   </a>
                 </div>
